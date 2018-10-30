@@ -1,0 +1,14 @@
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Warning"
+    }
+  },
+  "AllowedHosts": "*",
+  "AWS": {
+    "Region": "{awsRegion}",
+    "AccessKey": "{awsAccessKey}",
+    "SecretKey": "{awsSecretKey}"
+  },
+  "SignOnAuthority": "{ssoAddress}"
+}

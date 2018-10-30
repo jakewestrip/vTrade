@@ -1,0 +1,7 @@
+{
+    "apiAddress": "{apiAddress}",
+    "appAddress": "{appAddress}",
+
+    "clientId": "vTradeWeb",
+    "signOnServerAdress": "{ssoAddress}"
+}

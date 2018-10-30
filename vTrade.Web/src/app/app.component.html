@@ -1,0 +1,45 @@
+<ng-template #newTickerContent let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Add new Stock</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="newTickerString">Stock ticker:</label>
+        <div class="input-group">
+          <input [(ngModel)]="newTickerString" id="newTickerString" class="form-control" name="dp">
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+  </div>
+</ng-template>
+
+<!-- Container for sidebar(s) + page content -->
+<ng-sidebar-container>
+
+  <!-- Page content -->
+  <div ng-sidebar-content class="page-contents">
+    <header class="header" style="justify-content: space-between;">
+      <h2>vTrade</h2>
+      <h2 style="float: right;" (click)="logout()" class="link">Log out</h2>
+    </header>
+    <div style="text-align: center;">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm">
+            <app-portfolio #folio></app-portfolio>
+            <br>
+            <button *ngIf="_isAdmin" (click)="openNewTicker(newTickerContent)">Add tracked stock</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</ng-sidebar-container>

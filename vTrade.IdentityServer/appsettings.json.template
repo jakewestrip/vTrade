@@ -1,0 +1,8 @@
+﻿{
+  "AWS": {
+    "Region": "{awsRegion}",
+    "AccessKey": "{awsAccessKey}",
+    "SecretKey": "{awsSecretKey}"
+  },
+  "AppUrl": "{appAddress}"
+}

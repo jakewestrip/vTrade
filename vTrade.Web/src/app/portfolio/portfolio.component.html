@@ -1,0 +1,87 @@
+<ng-template #buyContent let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Buy Shares</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="numShares">Number of shares:</label>
+        <div class="input-group">
+          <input [(ngModel)]="shareNum" id="numShares" class="form-control" name="dp">
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+  </div>
+</ng-template>
+
+<ng-template #sellContent let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Sell Shares</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="numShares">Number of shares:</label>
+        <div class="input-group">
+          <input [(ngModel)]="shareNum" id="numShares" class="form-control" name="dp">
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+  </div>
+</ng-template>
+
+<ng-template #chartContent let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Daily Prices</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div *ngIf="chartMessage">{{ chartMessage }}</div> 
+    <div *ngIf="chart">
+      <canvas id="canvas">{{ chart }}</canvas>
+    </div>
+  </div>
+</ng-template>
+
+<table class="table ticker-table table-dark table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Ticker</th>
+        <th scope="col">Price</th>
+        <th scope="col">Owned Shares</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let stock of stocks">
+        <td><a (click)="openChart(chartContent, stock)" class="link">{{stock.ticker}}</a></td>
+        <td>{{stock.price}}</td>
+        <td>{{stock.ownedShares}}</td>
+        <td><a (click)="openBuy(buyContent, stock)" class="link">Buy</a></td>
+        <td><a (click)="openSell(sellContent, stock)" class="link">Sell</a></td>
+      </tr>
+      <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </tbody>
+  </table>
+  <h2>Money: {{money}}</h2>
